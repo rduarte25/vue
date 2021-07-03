@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+        <me-gusta></me-gusta>
+    </main>
+    <template id='meGusta'>
+        <button @click="incremento">{{total}} Me Gusta</button>
+    </template>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        Vue.component('me-gusta',{
+            template: '#meGusta',
+            data:function(){
+                return {
+                    total:0
+                }
+            },
+            methods:{
+                incremento:function(){
+                    this.total += 1
+                }
+            }
+        })
+        const app = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

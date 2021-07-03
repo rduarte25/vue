@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+        <h1>{{mensaje}}</h1>
+        <button @click="mensaje = 'mensaje cambiado'">Cambiar Mensaje</button>
+        <button @click="destruir">Destruir instancia</button>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                mensaje: 'Hola desde Vue',
+            },
+            beforeCreate(){
+                alert('beforeCreated');
+            },
+            created(){
+                alert('created');
+            },
+            beforeMount(){
+                alert('beforeMount');
+            },
+            mounted(){
+                alert('mounted');
+            },
+            beforeUpdate(){
+                alert('beforeUpdate');
+            },
+            updated(){
+                alert('updated');
+            },
+            beforeDestroy(){
+                alert('beforeDestroy');
+            },
+            destroyed(){
+                alert('destroyed');
+            },
+            methods:{
+                destruir(){
+                    this.$destroy();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

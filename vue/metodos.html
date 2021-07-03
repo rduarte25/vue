@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+        <h1>Calculador</h1>
+        <input type="number" name="" id="" v-model="v1" placeholder="Valor 1">
+        <input type="number" name="" id="" v-model="v2" placeholder="Valor 2" @keyup="operacion">
+        <br>
+        <input type="radio" name="" id="" v-model="ope" value="suma">Suma
+        <input type="radio" name="" id="" v-model="ope" value="resta">Resta
+        <input type="radio" name="" id="" v-model="ope" value="multi">Multiplicación
+        <input type="radio" name="" id="" v-model="ope" value="divi">División
+        <br>
+        <button v-on:click="operacion">Calcular</button>
+        <label for="">{{res}}</label>
+        <br>
+        <button @click="saludo('Hola como estas?')">Saludo</button>
+        <input type="text" name="" id="" @keyup.enter="saludo(dato)" v-model="dato" placeholder="Evento con tecla">
+        <!--enter, tab, detele, esc, space, left, up, down, right-->
+        <input type="text" name="" id="" @keyup.alt.13="saludo(dato)" v-model="dato" placeholder="Evento con combinacion de teclas">
+        <!--ctrl, alt, shift, meta-->
+        <br>
+        <br>
+        <h1>TodoList</h1>
+        <form action="" @submit.prevent="agregarPersona">
+            <input type="text" name="" id="" v-model="persona">
+            <br>
+            <input type="submit" value="Agregar">
+        </form>
+        <br>
+        <ul>
+            <li v-for="p in personas">
+                {{p}}
+            </li>
+        </ul>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datos: '',
+                v1:0,
+                v2:0,
+                res:0,
+                ope:'suma',
+                dato: '',
+                personas: ['Maria', 'Pedro', 'Luis',
+                ],
+                persona:'',
+            },
+            methods:{
+                operacion: function(){
+                    switch(this.ope){
+                        case 'suma':
+                            this.res = parseInt(this.v1) + parseInt(this.v2);
+                            break
+                        case 'resta':
+                            this.res = this.v1 - this.v2;
+                            break
+                        case 'multi':
+                            this.res = this.v1 * this.v2;
+                            break
+                        case 'divi':
+                            this.res = this.v1 / this.v2;
+                            break
+                    }
+                    return this.res;
+                },
+                saludo:function(mensaje){
+                    alert(mensaje);
+                    //if(event){
+                    //    alert('Evento Ejecutado');
+                    //}
+                },
+                agregarPersona:function(){
+                    if ( !this.persona == '' ) {
+                        //this.personas.push(this.persona);
+                        this.personas.unshift(this.persona);
+                        this.persona = '';
+                    }                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

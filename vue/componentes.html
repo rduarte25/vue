@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <h1>Instancia app</h1>
+        <hr>
+        <br>
+        <my-table :lista="personas"></my-table>
+        <hr>
+        <br>
+        <my-table :lista="peoples"></my-table>
+        <hr>
+        <br>
+    </div>
+    <hr>
+    <div id="app2">
+        <h1>Instancia app2</h1>
+        <hr>
+        <br>
+        <my-table :lista="personas"></my-table>
+        <hr>
+        <br>
+        <my-films :lista="films"></my-films>
+        <hr>
+        <br>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+
+        Vue.component('my-header', {
+            props:['titulo', 'subtitulo', 'contenido', 'alineacion'],
+            template:`
+            <div style="width: 300px;">
+                <h1>{{titulo}}</h1>
+                <h4>{{subtitulo}}</h4>
+                <p :align="alineacion">{{contenido}}</p>
+            </div>
+            `
+        });
+
+        Vue.component('my-table', {
+            props:['lista'],
+            template:`
+            <div>
+                <table>
+                    <th>Nombre</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <tr v-for="dato in lista">
+                        <td>{{dato.nombre}}</td>
+                        <td>{{dato.direccion}}</td>
+                        <td>{{dato.telefono}}</td>
+                    </tr>
+                </table>
+            </div>
+            `
+        });
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datos: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat consequatur error temporibus voluptatibus impedit molestias minima libero. Velit sint, error numquam architecto, iure quod necessitatibus totam eum consequuntur praesentium tempora!',
+                personas:[
+                    {nombre:'Pedro', direccion: 'Jardines', telefono: 1234567},
+                    {nombre:'María', direccion: 'Valles', telefono: 7654321},
+                    {nombre:'Cecilia', direccion: 'Perez', telefono: 1386452},
+                ],
+                peoples:[
+                    {nombre:'Jack', direccion: 'Sparrow', telefono: 1234562},
+                    {nombre:'María', direccion: 'Hill', telefono: 7654322},
+                    {nombre:'Robert', direccion: 'Santiago', telefono: 1386452},
+                ],
+            }
+        });
+        const myFlims = {        
+            props:['lista'],
+            template:`
+            <div>
+                <table>
+                    <th>Titulo</th>
+                    <th>Genero</th>
+                    <tr v-for="dato in lista">
+                        <td>{{dato.titulo}}</td>
+                        <td>{{dato.genero}}</td>
+                    </tr>
+                </table>
+            </div>
+            `        
+        }
+
+        const app2 = new Vue({
+            el: '#app2',
+            data: {
+                datos: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat consequatur error temporibus voluptatibus impedit molestias minima libero. Velit sint, error numquam architecto, iure quod necessitatibus totam eum consequuntur praesentium tempora!',
+                personas:[
+                    {nombre:'Pedro', direccion: 'Jardines', telefono: 1234567},
+                    {nombre:'María', direccion: 'Valles', telefono: 7654321},
+                    {nombre:'Cecilia', direccion: 'Perez', telefono: 1386452},
+                ],
+                films:[
+                    {titulo:'Piratas del caribe', genero: 'Aventura'},
+                    {titulo:'Rapido y furioso', genero: 'Acción'},
+                    {titulo:'El Conjuto', genero: 'Terror'},
+                ],
+            },
+            components:{
+                'my-films':myFlims
+            }
+        });
+    </script>
+    
+</body>
+</html>

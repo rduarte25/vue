@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+        <h1 v-text="text"></h1>
+        <div v-html="codigoHtml"></div>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                text: 'Soy un  texto inyectado con Vue.js',
+                datos: '',
+                codigoHtml: '<h1><i>Soy un texto con código html</i><h1>'
+            }
+        });
+    </script>
+</body>
+</html>

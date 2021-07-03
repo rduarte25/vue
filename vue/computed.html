@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .femenino {
+            color: pink;
+            font-family: 'Lucida Sans';
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        .masculino {
+            color: blue;
+            font-family: 'Times New Roman';
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <main id='app'>
+        <h2>Escribe tu edad</h2>
+        <input type="number" name="edad" id="edad" v-model="edad">
+        <div v-html="rangoEdad"></div>
+        <br>
+        <label :class="genero">{{concatenacion}}</label>
+        <br>
+        <input type="radio" name="gen" id="" v-model="gen" value="f">Femenino 
+        <input type="radio" name="gen" id="" v-model="gen" value="m">Masculino 
+        <br>
+        <p :style="estilo">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate non optio magni voluptas cumque qui eaque odit incidunt laborum debitis magnam alias consequatur doloribus unde architecto quisquam, rerum nostrum vitae?
+        </p>
+    </main>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datos: '',
+                edad: 0,
+                nombre:'Rafael',
+                apellidoP:'Duarte',
+                apellidoM:'Méndez',
+                gen: 'f',
+            },
+            computed: {
+                rangoEdad: function(){
+                    return this.edad >= 18 ? '<h1>Eres mayor de edad</h1>' : '<h1>Eres menor de edad</h1>';
+                },
+                concatenacion: function(){
+                    return this.nombre + ' ' + this.apellidoP + ' ' + this.apellidoM;
+                },
+                genero:function(){
+                    return this.gen == 'f' ? 'femenino' : 'masculino';
+                },
+                estilo: function(){
+                    //width: 300px; font-size: 20px; color: chocolate; text-align: justify;
+                    return {
+                        width: '300px',
+                        fontSize: '20px',
+                        color: 'chocolate',
+                        textAlign: 'justify',
+                    }
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

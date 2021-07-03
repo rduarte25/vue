@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id='app'>
+        <my-header>
+            <h4 slot="sub">Subtitulo</h4>
+            <p slot="parrafo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga dolore placeat tenetur distinctio, quas beatae repellat. Impedit, harum animi nobis dicta illo perferendis quo minus nemo esse mollitia commodi repellendus?</p>
+        </my-header>
+    </main>
+    <template id="miTemplate">
+        <div>
+            <slot name="sub"></slot>
+            <h1>Soy el titulo del articulo</h1>            
+            <slot name="parrafo"></slot>
+        </div>
+    </template>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        Vue.component('my-header', {
+            template:`#miTemplate`
+        });
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datos: '',
+            }
+        });
+    </script>
+</body>
+</html>

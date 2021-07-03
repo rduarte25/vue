@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-BIND</title>
+</head>
+    <main id='app'>
+        <div style="width: 500px;">
+            <input type="text" name="datos" id="datos" v-model="datos">
+            <p v-bind:align="datos">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos hic, non numquam officiis sint officia optio quae repellat et! Quod pariatur similique illo perferendis mollitia amet aliquam suscipit consectetur inventore.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam omnis numquam eligendi molestiae unde, perferendis alias in delectus fuga. Reiciendis ipsa perferendis illum aliquid nostrum ea ullam dolorem itaque corporis.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quod accusamus ex repellat quam at molestias totam reprehenderit. Ut, cumque non. Voluptatem, ullam id quisquam repellendus ea nisi ipsam perferendis?
+            </p>
+        </div>
+    </main>
+<body>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                datos: '',
+            }
+        });
+    </script>
+</body>
+</html>
